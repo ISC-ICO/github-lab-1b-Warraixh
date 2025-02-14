@@ -7,6 +7,12 @@ public class Main {
     private static int getRandInt() {
         return (int) (Math.random() * 10);
     }
+    System.out.println("Tell the code length between 2 to 6:");
+    codeLength = scanner.nextInt();
+    code = "";
+for (int i = 0; i < codeLength; i++) {
+    code += getRandInt();
+}
 
     /**
      * Complete the checkCode method to check the guess against the code
@@ -16,9 +22,19 @@ public class Main {
      * @return
      */
     public static boolean checkCode(String guess) {
-        
+        if (guess.equals(code)) {
         return true;
+    }  else {
+        int correctDigits = 0;
+        for (int i = 0; i < codeLength; i++) {
+            if (guess.charAt(i) == code.charAt(i)) {
+                correctDigits++;
+            }
+        }
+        System.out.println(String.format("Incorrect guess. You got %d digit(s) correct.", correctDigits));
+        return false;
     }
+}
  
     public static void main(String[] args) {
         System.out.println("Code cracker game");
